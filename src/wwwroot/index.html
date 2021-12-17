@@ -21,6 +21,16 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        function textControl(element,event) {
+            if(event.keyCode==9||event.which==9) {
+                event.preventDefault();
+                var s=element.selectionStart;
+                element.value=element.value.substring(0,element.selectionStart)+"\t"+element.value.substring(element.selectionEnd);
+                element.selectionEnd=s+1;
+            }
+        }
+    </script>
 </body>
 
 </html>
