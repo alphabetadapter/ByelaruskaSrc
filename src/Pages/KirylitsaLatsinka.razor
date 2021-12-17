@@ -1,0 +1,124 @@
+﻿@page "/kirylitsa-to-latsinka"
+
+<PageTitle>Kirylitsa -> Latsinka</PageTitle>
+
+@*<h6 class="fw-lighter text-secondary">Kitayka -> Latsinka</h6>*@
+
+<textarea 
+    onkeydown="textControl(this,event)"
+    class="form-control" 
+    id="textarea1" 
+    value="@KirylitsaTxt" 
+    @oninput="@((ChangeEventArgs e) => LatsinkaTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+
+<textarea 
+    onkeydown="textControl(this,event)"
+    class="form-control" 
+    id="textarea2" >@LatsinkaTxt</textarea>
+
+@code {
+
+    private string? KirylitsaTxt { get; set; }
+    private string? LatsinkaTxt { get; set; }
+
+    private string GetValue(string KirylitsaValue)
+    {
+        var tmpString = KirylitsaValue ?? string.Empty;
+        var letterCombinations = GetLetterCombinations();
+        var singleLetters = GetSingleLetters();
+        foreach (var lc in letterCombinations)
+        {
+            tmpString = tmpString.Replace(lc.Key, lc.Value);
+        }
+        foreach (var sl in singleLetters)
+        {
+            tmpString = tmpString.Replace(sl.Key, sl.Value);
+        }
+        return tmpString;
+    }
+
+    private IDictionary<string, string> GetLetterCombinations()
+    {
+        var dict = new Dictionary<string, string>();
+        // Belaruskaya (BGN PCGN 1979) latsinka
+        dict.Add("е", "ye");
+        dict.Add("ё", "yo");
+        dict.Add("ж", "zh");
+        dict.Add("ц", "ts");
+        dict.Add("ч", "ch");
+        dict.Add("ш", "sh");
+        dict.Add("ю", "yu");
+        dict.Add("я", "ya");
+
+        dict.Add("Е", "YE");
+        dict.Add("Ё", "YO");
+        dict.Add("Ж", "ZH");
+        dict.Add("Ц", "TS");
+        dict.Add("Ч", "CH");
+        dict.Add("Ш", "SH");
+        dict.Add("Ю", "YU");
+        dict.Add("Я", "YA");
+
+        dict.Add("'", "\"");
+        return dict;
+    }
+    private IDictionary<string, string> GetSingleLetters()
+    {
+        var dict = new Dictionary<string, string>();
+        // Belaruskaya (BGN PCGN 1979) latsinka
+        // г = g
+        // й = j
+        // x = h
+        dict.Add("а", "a");
+        dict.Add("б", "b");
+        dict.Add("в", "v");
+        dict.Add("г", "g");
+        dict.Add("д", "d");
+        dict.Add("з", "z");
+        dict.Add("і", "i");
+        dict.Add("й", "j");
+        dict.Add("к", "k");
+        dict.Add("л", "l");
+        dict.Add("м", "m");
+        dict.Add("н", "n");
+        dict.Add("о", "o");
+        dict.Add("п", "p");
+        dict.Add("р", "r");
+        dict.Add("с", "s");
+        dict.Add("т", "t");
+        dict.Add("у", "u");
+        dict.Add("ў", "w");
+        dict.Add("ф", "f");
+        dict.Add("x", "h");
+        dict.Add("ы", "y");
+        dict.Add("ь", "\'");
+        dict.Add("э", "e");
+
+        dict.Add("А", "A");
+        dict.Add("Б", "B");
+        dict.Add("В", "V");
+        dict.Add("Г", "G");
+        dict.Add("Д", "D");
+        dict.Add("З", "Z");
+        dict.Add("І", "I");
+        dict.Add("Й", "J");
+        dict.Add("К", "K");
+        dict.Add("Л", "L");
+        dict.Add("М", "M");
+        dict.Add("Н", "N");
+        dict.Add("О", "O");
+        dict.Add("П", "P");
+        dict.Add("Р", "R");
+        dict.Add("С", "S");
+        dict.Add("Т", "T");
+        dict.Add("У", "U");
+        dict.Add("Ў", "W");
+        dict.Add("Ф", "F");
+        dict.Add("Х", "H");
+        dict.Add("Ы", "Y");
+        dict.Add("Ь", "\'");
+        dict.Add("Э", "E");
+
+        return dict;
+    }
+}

@@ -1,0 +1,86 @@
+﻿@page "/kitayka-to-latsinka"
+
+<PageTitle>Kitayka -> Latsinka</PageTitle>
+
+@*<h6 class="fw-lighter text-secondary">Kitayka -> Latsinka</h6>*@
+
+<textarea 
+    onkeydown="textControl(this,event)"
+    class="form-control" 
+    id="textarea1" 
+    value="@KitaykaTxt" 
+    @oninput="@((ChangeEventArgs e) => LatsinkaTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+
+<textarea 
+    onkeydown="textControl(this,event)"
+    class="form-control" 
+    id="textarea2" >@LatsinkaTxt</textarea>
+
+@code {
+
+    private string? KitaykaTxt { get; set; }
+    private string? LatsinkaTxt { get; set; }
+
+    private string GetValue(string KitaykaValue)
+    {
+        var dict = GetDictionary();
+        var tmpString = KitaykaValue.ToLower() ?? string.Empty;
+        foreach (var d in dict)
+        {
+            tmpString = tmpString.Replace(d.Key, d.Value);
+        }
+        return tmpString;
+    }
+
+    private IDictionary<string, string> GetDictionary()
+    {
+        var dict = new Dictionary<string, string>();
+
+        // Chinese (Simplified, China)
+        // Google Input Tools
+        // https://www.google.com/inputtools/chrome/
+        // 五 	五笔	            // keyboard:
+        dict.Add("工", "a");		// a
+        dict.Add("了", "b");		// b
+        dict.Add("以", "c");		// c
+        dict.Add("在", "d");		// d
+        dict.Add("有", "e");		// e
+        dict.Add("地", "f");		// f
+        dict.Add("一", "g");		// g
+        dict.Add("上", "h");		// h
+        dict.Add("不", "i");		// i
+        dict.Add("是", "j");		// j
+        dict.Add("中", "k");		// k
+        dict.Add("国", "l");		// l
+        dict.Add("同", "m");		// m
+        dict.Add("民", "n");		// n
+        dict.Add("为", "o");		// o
+        dict.Add("这", "p");		// p
+        dict.Add("我", "q");		// q
+        dict.Add("的", "r");		// r
+        dict.Add("要", "s");		// s
+        dict.Add("和", "t");		// t
+        dict.Add("产", "u");		// u
+        dict.Add("发", "v");		// v
+        dict.Add("人", "w");		// w
+        dict.Add("经", "x");		// x
+        dict.Add("主", "y");		// y
+        dict.Add("你", "z");		// zz
+        dict.Add("‘", "'");
+        dict.Add("“", "\"");
+        dict.Add("，", ",");
+        dict.Add("。", ".");
+        dict.Add("（", "(");
+        dict.Add("）", ")");
+        dict.Add("；", ";");
+        dict.Add("【", "[");
+        dict.Add("】", "]");
+        dict.Add("：", ":");
+        dict.Add("！", "!");
+        dict.Add("？", "?");
+		dict.Add("》", ">");
+		dict.Add("《", "<");
+
+        return dict;
+    }
+}
