@@ -1,29 +1,27 @@
-﻿@page "/latsinka-to-kirylitsa"
+﻿@page "/Latin-to-Belarusian"
 
-<PageTitle>Latsinka -> Kirylitsa</PageTitle>
-
-@*<h6 class="fw-lighter text-secondary">Latsinka -> Kitayka</h6>*@
+<PageTitle>Latin -> Belarusian</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea1" 
-    value="@LatsinkaTxt" 
-    @oninput="@((ChangeEventArgs e) => KirylitsaTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+    value="@LatinTxt" 
+    @oninput="@((ChangeEventArgs e) => BelarusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
-    id="textarea2" >@KirylitsaTxt</textarea>
+    id="textarea2" >@BelarusianTxt</textarea>
 
 @code {
 
-    private string? KirylitsaTxt { get; set; }
-    private string? LatsinkaTxt { get; set; }
+    private string? BelarusianTxt { get; set; }
+    private string? LatinTxt { get; set; }
 
-    private string GetValue(string LatsinkaValue)
+    private string GetValue(string LatinValue)
     {
-        var tmpString = LatsinkaValue ?? string.Empty;
+        var tmpString = LatinValue ?? string.Empty;
         var correction = CorrectLetterCombinations();
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
@@ -45,10 +43,11 @@
     private IDictionary<string, string> CorrectLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belaruskaya (BGN PCGN 1979) latsinka
+        // Belarusian (BGN PCGN 1979) Latin
         dict.Add("yE", "Е");
         dict.Add("yO", "Ё");
         dict.Add("zH", "Ж");
+        dict.Add("kH", "Х");
         dict.Add("tS", "Ц");
         dict.Add("cH", "Ч");
         dict.Add("sH", "Ш");
@@ -58,6 +57,7 @@
         dict.Add("Ye", "Е");
         dict.Add("Yo", "Ё");
         dict.Add("Zh", "Ж");
+        dict.Add("Kh", "Х");
         dict.Add("Ts", "Ц");
         dict.Add("Ch", "Ч");
         dict.Add("Sh", "Ш");
@@ -70,10 +70,11 @@
     private IDictionary<string, string> GetLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belaruskaya (BGN PCGN 1979) latsinka
+        // Belarusian (BGN PCGN 1979) Latin
         dict.Add("ye", "е");
         dict.Add("yo", "ё");
         dict.Add("zh", "ж");
+        dict.Add("kh", "x");
         dict.Add("ts", "ц");
         dict.Add("ch", "ч");
         dict.Add("sh", "ш");
@@ -83,6 +84,7 @@
         dict.Add("YE", "Е");
         dict.Add("YO", "Ё");
         dict.Add("ZH", "Ж");
+        dict.Add("KH", "Х");
         dict.Add("TS", "Ц");
         dict.Add("CH", "Ч");
         dict.Add("SH", "Ш");
@@ -96,10 +98,9 @@
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
-        // Belaruskaya (BGN PCGN 1979) latsinka
+        // Belarusian (BGN PCGN 1979) Latin
         // г = g
         // й = j
-        // x = h
         dict.Add("a", "а");
         dict.Add("b", "б");
         dict.Add("v", "в");
@@ -120,8 +121,8 @@
         dict.Add("u", "у");
         dict.Add("w", "ў");
         dict.Add("f", "ф");
-        dict.Add("h", "x");
         dict.Add("y", "ы");
+        dict.Add("e", "э");
 
         dict.Add("A", "А");
         dict.Add("B", "Б");
@@ -143,7 +144,6 @@
         dict.Add("U", "У");
         dict.Add("W", "Ў");
         dict.Add("F", "Ф");
-        dict.Add("H", "Х");
         dict.Add("Y", "Ы");
         dict.Add("E", "Э");
 

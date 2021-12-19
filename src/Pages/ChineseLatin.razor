@@ -1,30 +1,28 @@
-﻿@page "/kitayka-to-latsinka"
+﻿@page "/Chinese-to-Latin"
 
-<PageTitle>Kitayka -> Latsinka</PageTitle>
-
-@*<h6 class="fw-lighter text-secondary">Kitayka -> Latsinka</h6>*@
+<PageTitle>Chinese -> Latin</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea1" 
-    value="@KitaykaTxt" 
-    @oninput="@((ChangeEventArgs e) => LatsinkaTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+    value="@ChineseTxt" 
+    @oninput="@((ChangeEventArgs e) => LatinTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
-    id="textarea2" >@LatsinkaTxt</textarea>
+    id="textarea2" >@LatinTxt</textarea>
 
 @code {
 
-    private string? KitaykaTxt { get; set; }
-    private string? LatsinkaTxt { get; set; }
+    private string? ChineseTxt { get; set; }
+    private string? LatinTxt { get; set; }
 
-    private string GetValue(string KitaykaValue)
+    private string GetValue(string ChineseValue)
     {
         var dict = GetDictionary();
-        var tmpString = KitaykaValue.ToLower() ?? string.Empty;
+        var tmpString = ChineseValue.ToLower() ?? string.Empty;
         foreach (var d in dict)
         {
             tmpString = tmpString.Replace(d.Key, d.Value);
@@ -36,10 +34,10 @@
     {
         var dict = new Dictionary<string, string>();
 
-        // Chinese (Simplified, China)
+        // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/
-        // 五 	五笔	            // keyboard:
+        //                      // keyboard:
         dict.Add("工", "a");		// a
         dict.Add("了", "b");		// b
         dict.Add("以", "c");		// c

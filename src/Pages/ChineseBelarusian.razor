@@ -1,29 +1,27 @@
-﻿@page "/kitayka-to-Kirylitsa"
+﻿@page "/Chinese-to-Belarusian"
 
-<PageTitle>Kitayka -> Kirylitsa</PageTitle>
-
-@*<h6 class="fw-lighter text-secondary">Kitayka -> Latsinka</h6>*@
+<PageTitle>Chinese -> Belarusian</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea1" 
-    value="@KitaykaTxt" 
-    @oninput="@((ChangeEventArgs e) => KirylitsaTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+    value="@ChineseTxt" 
+    @oninput="@((ChangeEventArgs e) => BelarusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
-    id="textarea2" >@KirylitsaTxt</textarea>
+    id="textarea2" >@BelarusianTxt</textarea>
 
 @code {
 
-    private string? KitaykaTxt { get; set; }
-    private string? KirylitsaTxt { get; set; }
+    private string? ChineseTxt { get; set; }
+    private string? BelarusianTxt { get; set; }
 
-    private string GetValue(string KitaykaValue)
+    private string GetValue(string ChineseValue)
     {
-        var tmpString = KitaykaValue.ToLower() ?? string.Empty;
+        var tmpString = ChineseValue.ToLower() ?? string.Empty;
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
         foreach (var lc in letterCombinations)
@@ -41,14 +39,15 @@
     {
         var dict = new Dictionary<string, string>();
 
-        // Belaruskaya (BGN PCGN 1979) latsinka
-        // Chinese (Simplified, China)
+        // Belarusian (BGN PCGN 1979) Latin
+        // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
-        // 五 	五笔	            // keyboard:
+        //                        // keyboard:
         dict.Add("主有", "е");    // y e
         dict.Add("主为", "ё");    // y o
         dict.Add("你上", "ж");    // zz h
+        dict.Add("中上", "x");    // k h
         dict.Add("和要", "ц");    // t s
         dict.Add("以上", "ч");    // c h
         dict.Add("要上", "ш");    // s h
@@ -63,14 +62,13 @@
     {
         var dict = new Dictionary<string, string>();
 
-        // Belaruskaya (BGN PCGN 1979) latsinka
+        // Belarusian (BGN PCGN 1979) Latin
         // г = g
         // й = j
-        // x = h
-        // Chinese (Simplified, China)
+        // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
-        // 五 	五笔	            // keyboard:
+        //                       // keyboard:
         dict.Add("工", "а");     // a
         dict.Add("了", "б");     // b
         dict.Add("发", "в");     // v
@@ -91,7 +89,6 @@
         dict.Add("产", "у");     // u
         dict.Add("人", "ў");     // w
         dict.Add("地", "ф");     // f
-        dict.Add("上", "x");     // h
         dict.Add("主", "ы");     // y
         dict.Add("有", "э");     // e
         dict.Add("-", "'");        
