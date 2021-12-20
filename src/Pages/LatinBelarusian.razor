@@ -7,12 +7,14 @@
     class="form-control" 
     id="textarea1" 
     value="@LatinTxt" 
+    maxlength="4000" 
     @oninput="@((ChangeEventArgs e) => BelarusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
-    id="textarea2" >@BelarusianTxt</textarea>
+    id="textarea2" 
+    maxlength="4000" >@BelarusianTxt</textarea>
 
 @code {
 
