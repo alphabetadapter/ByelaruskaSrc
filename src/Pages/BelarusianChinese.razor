@@ -52,10 +52,12 @@
         dict.Add("ц", "和要");    // t s
         dict.Add("ч", "以上");    // c h
         dict.Add("ш", "要上");    // s h
+        dict.Add("щ", "要上以上");    // s h ch
         dict.Add("ю", "主产");    // y u
         dict.Add("я", "主工");    // y a
         dict.Add("х", "中上");    // k h
         dict.Add("'", "-"); 
+        dict.Add("ъ", "-");
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
@@ -76,6 +78,7 @@
         dict.Add("д", "在");     // d
         dict.Add("з", "你");     // zz
         dict.Add("і", "不");     // i
+        dict.Add("и", "不");     // i
         dict.Add("й", "是");     // j
         dict.Add("к", "中");     // k
         dict.Add("л", "国");     // l
@@ -102,8 +105,8 @@
         dict.Add(":", "：");
         dict.Add("!", "！");
         dict.Add("?", "？");
-		dict.Add(">", "》");
-		dict.Add("<", "《");
+        dict.Add(">", "》");
+        dict.Add("<", "《");
         return dict;
     }
 }
