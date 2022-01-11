@@ -52,12 +52,11 @@
         dict.Add("ц", "和要");    // t s
         dict.Add("ч", "以上");    // c h
         dict.Add("ш", "要上");    // s h
-        dict.Add("щ", "要上以上");    // s h ch
+        dict.Add("щ", "要上以上");// s h ch
         dict.Add("ю", "主产");    // y u
         dict.Add("я", "主工");    // y a
         dict.Add("х", "中上");    // k h
-        dict.Add("'", "-"); 
-        dict.Add("ъ", "-");
+
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
@@ -67,6 +66,8 @@
         // Belarusian (BGN PCGN 1979) Latin
         // г = g
         // й = j
+        // ь = x
+        // ’ = q
         // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
@@ -93,8 +94,11 @@
         dict.Add("ў", "人");     // w
         dict.Add("ф", "地");     // f
         dict.Add("ы", "主");     // y
+        dict.Add("ь", "经");     // x   
+        dict.Add("'", "我");     // q
+        dict.Add("’", "我");     // q        
+        dict.Add("ъ", "我");     // q
         dict.Add("э", "有");     // e
-        dict.Add("ь", "'");
         dict.Add(",", "，");
         dict.Add(".", "。");
         dict.Add("(", "（");

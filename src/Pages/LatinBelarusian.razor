@@ -92,17 +92,16 @@
         dict.Add("SH", "Ш");
         dict.Add("YU", "Ю");
         dict.Add("YA", "Я");
-
-        dict.Add("'", "ь");
-
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
         // Belarusian (BGN PCGN 1979) Latin
-        // г = g
-        // й = j
+        // g = г
+        // j = й
+        // x = ь
+        // q = ’
         dict.Add("a", "а");
         dict.Add("b", "б");
         dict.Add("v", "в");
@@ -125,6 +124,8 @@
         dict.Add("f", "ф");
         dict.Add("y", "ы");
         dict.Add("e", "э");
+        dict.Add("x", "ь");
+        dict.Add("q", "’");
 
         dict.Add("A", "А");
         dict.Add("B", "Б");
@@ -147,9 +148,9 @@
         dict.Add("W", "Ў");
         dict.Add("F", "Ф");
         dict.Add("Y", "Ы");
+        dict.Add("X", "Ь");
+        dict.Add("Q", "’");
         dict.Add("E", "Э");
-
-        dict.Add("-", "'");
         return dict;
     }    
 }
