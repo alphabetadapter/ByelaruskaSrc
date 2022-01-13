@@ -24,7 +24,7 @@
     private string GetValue(string LatinValue)
     {
         var dict = GetDictionary();
-        var tmpString = LatinValue.ToLower() ?? string.Empty;
+        var tmpString = LatinValue ?? string.Empty;
         foreach (var d in dict)
         {
             tmpString = tmpString.Replace(d.Key, d.Value);
@@ -40,6 +40,34 @@
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
         // 	                    // keyboard:
+
+        dict.Add("A", "多工");		// qq a
+        dict.Add("B", "多了");		// qq b
+        dict.Add("C", "多以");		// qq c
+        dict.Add("D", "多在");		// qq d
+        dict.Add("E", "多有");		// qq e
+        dict.Add("F", "多地");		// qq f
+        dict.Add("G", "多一");		// qq g
+        dict.Add("H", "多上");		// qq h
+        dict.Add("I", "多不");		// qq i
+        dict.Add("J", "多是");		// qq j
+        dict.Add("K", "多中");		// qq k
+        dict.Add("L", "多国");		// qq l
+        dict.Add("M", "多同");		// qq m
+        dict.Add("N", "多民");		// qq n
+        dict.Add("O", "多为");		// qq o
+        dict.Add("P", "多这");		// qq p
+        dict.Add("Q", "多我");		// qq q
+        dict.Add("R", "多的");		// qq r
+        dict.Add("S", "多要");		// qq s
+        dict.Add("T", "多和");		// qq t
+        dict.Add("U", "多产");		// qq u
+        dict.Add("V", "多发");		// qq v
+        dict.Add("W", "多人");		// qq w
+        dict.Add("X", "多经");		// qq x
+        dict.Add("Y", "多主");		// qq y
+        dict.Add("Z", "多你");		// qq zz
+
         dict.Add("a", "工");		// a
         dict.Add("b", "了");		// b
         dict.Add("c", "以");		// c

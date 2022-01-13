@@ -46,14 +46,9 @@
     {
         var dict = new Dictionary<string, string>();
         // Belarusian (BGN PCGN 1979) Latin
-        dict.Add("сI", "C");
-        dict.Add("эЙч", "H");
-        dict.Add("эйЧ", "H");
-        dict.Add("эЙЧ", "H");
-        dict.Add("ЭЙч", "H");
-        dict.Add("ЭйЧ", "H");
-        dict.Add("ЭЙЧ", "H");
-        
+        dict.Add("[sIː]", "C");
+        dict.Add("[eIʧ]эЙч", "H");
+        dict.Add("[EIʧ]ЭЙч", "H");
         return dict;
     }
 
@@ -61,10 +56,10 @@
     {
         var dict = new Dictionary<string, string>();
         // Belarusian (BGN PCGN 1979) Latin
-        dict.Add("сі", "c");
-        dict.Add("эйч", "h");
-        dict.Add("Сi", "C");
-        dict.Add("Эйч", "H");
+        dict.Add("[siː]", "c");
+        dict.Add("[eɪʧ]", "h");
+        dict.Add("[Siː]", "C");
+        dict.Add("[Eɪʧ]", "H");
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
@@ -76,8 +71,8 @@
         // ь = x
         // ’ = q
         // ъ = q
-        // сі = c
-        // эйч = h
+        // [siː] = c
+        // [eɪʧ] = h
         dict.Add("е", "ye");
         dict.Add("ё", "yo");
         dict.Add("ж", "zh");

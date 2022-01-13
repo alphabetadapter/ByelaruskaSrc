@@ -23,16 +23,59 @@
 
     private string GetValue(string ChineseValue)
     {
-        var dict = GetDictionary();
-        var tmpString = ChineseValue.ToLower() ?? string.Empty;
-        foreach (var d in dict)
+        var tmpString = ChineseValue ?? string.Empty;
+        var upperCase = GetUpperCase();
+        var singleLetters = GetSingleLetters();
+        foreach (var uc in upperCase)
         {
-            tmpString = tmpString.Replace(d.Key, d.Value);
+            tmpString = tmpString.Replace(uc.Key, uc.Value);
+        }
+        foreach (var sl in singleLetters)
+        {
+            tmpString = tmpString.Replace(sl.Key, sl.Value);
         }
         return tmpString;
     }
 
-    private IDictionary<string, string> GetDictionary()
+    private IDictionary<string, string> GetUpperCase()
+    {
+        var dict = new Dictionary<string, string>();
+
+        // Belarusian (BGN PCGN 1979) Latin
+        // Chinese (Simplified, China, 五, 五笔)
+        // Google Input Tools
+        // https://www.google.com/inputtools/chrome/		
+        //                        // keyboard:
+        dict.Add("多工", "A");		// qq a
+        dict.Add("多了", "B");		// qq b
+        dict.Add("多以", "C");		// qq c
+        dict.Add("多在", "D");		// qq d
+        dict.Add("多有", "E");		// qq e
+        dict.Add("多地", "F");		// qq f
+        dict.Add("多一", "G");		// qq g
+        dict.Add("多上", "H");		// qq h
+        dict.Add("多不", "I");		// qq i
+        dict.Add("多是", "J");		// qq j
+        dict.Add("多中", "K");		// qq k
+        dict.Add("多国", "L");		// qq l
+        dict.Add("多同", "M");		// qq m
+        dict.Add("多民", "N");		// qq n
+        dict.Add("多为", "O");		// qq o
+        dict.Add("多这", "P");		// qq p
+        dict.Add("多我", "Q");		// qq q
+        dict.Add("多的", "R");		// qq r
+        dict.Add("多要", "S");		// qq s
+        dict.Add("多和", "T");		// qq t
+        dict.Add("多产", "U");		// qq u
+        dict.Add("多发", "V");		// qq v
+        dict.Add("多人", "W");		// qq w
+        dict.Add("多经", "X");		// qq x
+        dict.Add("多主", "Y");		// qq y
+        dict.Add("多你", "Z");		// qq zz
+        return dict;
+    }
+
+    private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
 

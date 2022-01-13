@@ -23,9 +23,14 @@
 
     private string GetValue(string ChineseValue)
     {
-        var tmpString = ChineseValue.ToLower() ?? string.Empty;
+        var tmpString = ChineseValue ?? string.Empty;
+        var upperCase = GetUpperCase();
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
+        foreach (var uc in upperCase)
+        {
+            tmpString = tmpString.Replace(uc.Key, uc.Value);
+        }
         foreach (var lc in letterCombinations)
         {
             tmpString = tmpString.Replace(lc.Key, lc.Value);
@@ -35,6 +40,53 @@
             tmpString = tmpString.Replace(sl.Key, sl.Value);
         }
         return tmpString;
+    }
+
+    private IDictionary<string, string> GetUpperCase()
+    {
+        var dict = new Dictionary<string, string>();
+
+        // Belarusian (BGN PCGN 1979) Latin
+        // Chinese (Simplified, China, 五, 五笔)
+        // Google Input Tools
+        // https://www.google.com/inputtools/chrome/		
+        //                        // keyboard:
+        dict.Add("多主有", "Е");    // qq y e
+        dict.Add("多主为", "Ё");    // qq y o
+        dict.Add("多你上", "Ж");    // qq zz h
+        dict.Add("多中上", "З");    // qq k h
+        dict.Add("多和要", "Ц");    // qq t s
+        dict.Add("多以上", "Ч");    // qq c h
+        dict.Add("多要上", "Ш");    // qq s h
+        dict.Add("多主产", "Ю");    // qq y u
+        dict.Add("多主工", "Я");    // qq y a
+
+        dict.Add("多工", "А");     // qq a
+        dict.Add("多了", "Б");     // qq b
+        dict.Add("多发", "В");     // qq v
+        dict.Add("多一", "Г");     // qq g
+        dict.Add("多在", "Д");     // qq d
+        dict.Add("多你", "З");     // qq zz
+        dict.Add("多不", "I");     // qq i
+        dict.Add("多是", "Й");     // qq j
+        dict.Add("多中", "К");     // qq k
+        dict.Add("多国", "Л");     // qq l
+        dict.Add("多同", "М");     // qq m
+        dict.Add("多民", "Н");     // qq n
+        dict.Add("多为", "О");     // qq o
+        dict.Add("多这", "П");     // qq p
+        dict.Add("多的", "Р");     // qq r
+        dict.Add("多要", "С");     // qq s
+        dict.Add("多和", "Т");     // qq t
+        dict.Add("多产", "У");     // qq u
+        dict.Add("多人", "Ў");     // qq w
+        dict.Add("多地", "Ф");     // qq f
+        dict.Add("多主", "Ы");     // qq y
+        dict.Add("多经", "Ь");     // qq x
+        dict.Add("多有", "Э");     // qq e
+        dict.Add("多以", "[Siː]"); // qq c
+        dict.Add("多上", "[Eɪʧ]"); // qq h
+        return dict;
     }
 
     private IDictionary<string, string> GetLetterCombinations()
@@ -67,8 +119,8 @@
         // ь = x
         // ’ = q
         // ъ = q
-        // сі = c
-        // эйч = h 
+        // [siː] = c
+        // [eɪʧ] = h 
         // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
@@ -97,8 +149,9 @@
         dict.Add("经", "ь");     // x
         dict.Add("我", "’");     // q
         dict.Add("有", "э");     // e
-        dict.Add("以", "сі");    // c
-        dict.Add("上", "эйч");   // h
+        dict.Add("以", "[siː]"); // c
+        dict.Add("上", "[eɪʧ]"); // h
+
         dict.Add("，", ",");
         dict.Add("。", ".");
         dict.Add("（", "(");
