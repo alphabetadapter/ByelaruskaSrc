@@ -44,19 +44,12 @@
         // Belarusian (BGN PCGN 1979) Latin
         // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
+        // сі = c
+        // эйч = h
         // https://www.google.com/inputtools/chrome/		
         //                        // keyboard:
-        dict.Add("е", "主有");    // y e
-        dict.Add("ё", "主为");    // y o
-        dict.Add("ж", "你上");    // zz h
-        dict.Add("ц", "和要");    // t s
-        dict.Add("ч", "以上");    // c h
-        dict.Add("ш", "要上");    // s h
-        dict.Add("щ", "要上以上");// s h ch
-        dict.Add("ю", "主产");    // y u
-        dict.Add("я", "主工");    // y a
-        dict.Add("х", "中上");    // k h
-
+        dict.Add("сі", "以");     // c
+        dict.Add("эйч", "上");    // h
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
@@ -72,6 +65,18 @@
         // Google Input Tools
         // https://www.google.com/inputtools/chrome/		
         //                       // keyboard:
+
+        dict.Add("е", "主有");    // y e
+        dict.Add("ё", "主为");    // y o
+        dict.Add("ж", "你上");    // zz h
+        dict.Add("ц", "和要");    // t s
+        dict.Add("ч", "以上");    // c h
+        dict.Add("ш", "要上");    // s h
+        dict.Add("щ", "要上以上");// s h ch
+        dict.Add("ю", "主产");    // y u
+        dict.Add("я", "主工");    // y a
+        dict.Add("х", "中上");    // k h
+
         dict.Add("а", "工");     // a
         dict.Add("б", "了");     // b
         dict.Add("в", "发");     // v
