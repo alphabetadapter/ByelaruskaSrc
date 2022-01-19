@@ -46,9 +46,8 @@
     {
         var dict = new Dictionary<string, string>();
         // Belarusian (BGN PCGN 1979) Latin
-        dict.Add("[sIː]", "多以");    // qq c
-        dict.Add("[eIʧ]", "多上");   // qq h
-        dict.Add("[EIʧ]", "多上");   // qq h
+        dict.Add("[К|с]", "多以");    // qq c
+        dict.Add("[к|С]", "多以");    // qq c
         return dict;
     }
 
@@ -59,14 +58,14 @@
         // Belarusian (BGN PCGN 1979) Latin
         // Chinese (Simplified, China, 五, 五笔)
         // Google Input Tools
-        // [siː] = c
-        // [eɪʧ] = h
+        // [к|с] = c
+        // [х] = h
         // https://www.google.com/inputtools/chrome/		
         //                        // keyboard:
-        dict.Add("[Siː]", "多以");    // qq c
-        dict.Add("[Eɪʧ]", "多上");   // qq h
-        dict.Add("[siː]", "以");     // c
-        dict.Add("[eɪʧ]", "上");    // h
+        dict.Add("[К|С]", "多以");    // qq c
+        dict.Add("[Х]", "多上");   // qq h
+        dict.Add("[к|с]", "以");     // c
+        dict.Add("[х]", "上");    // h
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
