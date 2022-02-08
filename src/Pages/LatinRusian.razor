@@ -1,6 +1,6 @@
-﻿@page "/Latin-to-Belarusian"
+﻿@page "/Latin-to-Rusian"
 
-<PageTitle>Latin -> Belarusian</PageTitle>
+<PageTitle>Latin -> Rusian</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
@@ -8,25 +8,31 @@
     id="textarea1" 
     value="@LatinTxt" 
     maxlength="4000" 
-    @oninput="@((ChangeEventArgs e) => BelarusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+    @oninput="@((ChangeEventArgs e) => RusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea2" 
-    maxlength="4000" >@BelarusianTxt</textarea>
+    maxlength="4000" >@RusianTxt</textarea>
 
 @code {
 
-    private string? BelarusianTxt { get; set; }
+    private string? RusianTxt { get; set; }
     private string? LatinTxt { get; set; }
 
     private string GetValue(string LatinValue)
     {
         var tmpString = LatinValue ?? string.Empty;
+        var specialCombinations = SpecialLetterCombinations();
         var correction = CorrectLetterCombinations();
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
+        
+        foreach (var sc in specialCombinations)
+        {
+            tmpString = tmpString.Replace(sc.Key, sc.Value);
+        }
         foreach (var c in correction)
         {
             tmpString = tmpString.Replace(c.Key, c.Value);
@@ -42,10 +48,75 @@
         return tmpString;
     }
 
+    private IDictionary<string, string> SpecialLetterCombinations()
+    {
+        var dict = new Dictionary<string, string>();
+        // Rusian (BGN PCGN 1979) Latin
+
+        dict.Add("SHCH", "Щ");
+        dict.Add("SHCh", "Щ");
+
+        dict.Add("SHcH", "Щ");
+        dict.Add("SHch", "Щ");
+
+        dict.Add("ShCH", "Щ");
+        dict.Add("ShCh", "Щ");
+
+        dict.Add("ShcH", "Щ");
+        dict.Add("Shch", "Щ");
+
+        dict.Add("sHCH", "щ");
+        dict.Add("sHCh", "щ");
+
+        dict.Add("sHcH", "щ");
+        dict.Add("sHch", "щ");
+
+        dict.Add("shCH", "щ");
+        dict.Add("shCh", "щ");
+
+        dict.Add("shcH", "щ");
+        dict.Add("shch", "щ");
+
+        /////////////////
+
+        dict.Add("SH-CH", "ШЧ");
+        dict.Add("SH-Ch", "ШЧ");
+
+        dict.Add("SH-cH", "Шч");
+        dict.Add("SH-ch", "Шч");
+
+        dict.Add("Sh-CH", "ШЧ");
+        dict.Add("Sh-Ch", "ШЧ");
+
+        dict.Add("Sh-cH", "Шч");
+        dict.Add("Sh-ch", "Шч");
+
+        dict.Add("sH-CH", "шЧ");
+        dict.Add("sH-Ch", "шЧ");
+
+        dict.Add("sH-cH", "шч");
+        dict.Add("sH-ch", "шч");
+
+        dict.Add("sh-CH", "шЧ");
+        dict.Add("sh-Ch", "шЧ");
+
+        dict.Add("sh-cH", "шч");
+        dict.Add("sh-ch", "шч");
+
+        ///////////////
+
+        dict.Add("T-S", "ТС");
+        dict.Add("t-S", "тС");
+        dict.Add("T-s", "Тс");
+        dict.Add("t-s", "тс");
+
+        return dict;
+    }
+
     private IDictionary<string, string> CorrectLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         dict.Add("yE", "Е");
         dict.Add("yO", "Ё");
         dict.Add("zH", "Ж");
@@ -65,14 +136,13 @@
         dict.Add("Sh", "Ш");
         dict.Add("Yu", "Ю");
         dict.Add("Ya", "Я");
-
         return dict;
     }
 
     private IDictionary<string, string> GetLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         dict.Add("ye", "е");
         dict.Add("yo", "ё");
         dict.Add("zh", "ж");
@@ -97,7 +167,7 @@
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         // g = г
         // j = й
         // x = ь
@@ -110,7 +180,7 @@
         dict.Add("g", "г");
         dict.Add("d", "д");
         dict.Add("z", "з");
-        dict.Add("i", "і");
+        dict.Add("i", "и");
         dict.Add("j", "й");
         dict.Add("k", "к");
         dict.Add("l", "л");
@@ -122,11 +192,11 @@
         dict.Add("s", "с");
         dict.Add("t", "т");
         dict.Add("u", "у");
-        dict.Add("w", "ў");
+        dict.Add("w", "у");     //
         dict.Add("f", "ф");
         dict.Add("y", "ы");
         dict.Add("x", "ь");
-        dict.Add("q", "’");
+        dict.Add("q", "ъ");
         dict.Add("e", "э");
         dict.Add("c", "[к|с]");
         dict.Add("h", "[х]");
@@ -137,7 +207,7 @@
         dict.Add("G", "Г");
         dict.Add("D", "Д");
         dict.Add("Z", "З");
-        dict.Add("I", "І");
+        dict.Add("I", "И");
         dict.Add("J", "Й");
         dict.Add("K", "К");
         dict.Add("L", "Л");
@@ -149,11 +219,11 @@
         dict.Add("S", "С");
         dict.Add("T", "Т");
         dict.Add("U", "У");
-        dict.Add("W", "Ў");
+        dict.Add("W", "У");     //
         dict.Add("F", "Ф");
         dict.Add("Y", "Ы");
         dict.Add("X", "Ь");
-        dict.Add("Q", "’");
+        dict.Add("Q", "Ъ");
         dict.Add("E", "Э");
         dict.Add("C", "[К|С]");
         dict.Add("H", "[Х]");

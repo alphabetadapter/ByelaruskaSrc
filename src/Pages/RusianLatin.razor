@@ -1,12 +1,12 @@
-﻿@page "/Belarusian-to-Latin"
+﻿@page "/Rusian-to-Latin"
 
-<PageTitle>Belarusian -> Latin</PageTitle>
+<PageTitle>Rusian -> Latin</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea1" 
-    value="@BelarusianTxt" 
+    value="@RusianTxt" 
     maxlength="4000" 
     @oninput="@((ChangeEventArgs e) => LatinTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
@@ -18,12 +18,12 @@
 
 @code {
 
-    private string? BelarusianTxt { get; set; }
+    private string? RusianTxt { get; set; }
     private string? LatinTxt { get; set; }
 
-    private string GetValue(string BelarusianValue)
+    private string GetValue(string RusianValue)
     {
-        var tmpString = BelarusianValue ?? string.Empty;
+        var tmpString = RusianValue ?? string.Empty;
         var correction = CorrectLetterCombinations();
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
@@ -45,7 +45,7 @@
     private IDictionary<string, string> CorrectLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         dict.Add("[К|с]", "C");
         dict.Add("[к|С]", "C");
         return dict;
@@ -54,17 +54,28 @@
     private IDictionary<string, string> GetLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         dict.Add("[к|с]", "c");
         dict.Add("[х]", "h");
         dict.Add("[К|С]", "C");
         dict.Add("[Х]", "H");
+
+        dict.Add("ТС", "T-S");
+        dict.Add("Тс", "T-s");
+        dict.Add("тС", "t-S");
+        dict.Add("тс", "t-s");
+
+        dict.Add("ШЧ", "Sh-Ch");
+        dict.Add("Шч", "Sh-ch");
+        dict.Add("шЧ", "sh-Ch");
+        dict.Add("шч", "sh-ch");
+
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
-        // Belarusian (BGN PCGN 1979) Latin
+        // Rusian (BGN PCGN 1979) Latin
         // г = g
         // й = j
         // ь = x
