@@ -48,6 +48,11 @@
         // Belarusian (BGN PCGN 1979) Latin
         dict.Add("[К|с]", "多以");    // qq c
         dict.Add("[к|С]", "多以");    // qq c
+
+        dict.Add("ТС", "多和-多要");
+        dict.Add("Тс", "多和-要");
+        dict.Add("тС", "和-多要");
+
         return dict;
     }
 
@@ -66,6 +71,9 @@
         dict.Add("[Х]", "多上");   // qq h
         dict.Add("[к|с]", "以");     // c
         dict.Add("[х]", "上");    // h
+
+        dict.Add("тс", "和-要");
+
         return dict;
     }
     private IDictionary<string, string> GetSingleLetters()
