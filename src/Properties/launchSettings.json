@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "byelaruska": {
+    "Adapter": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
