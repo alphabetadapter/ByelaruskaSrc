@@ -1,6 +1,6 @@
-﻿@page "/Latin-to-Rusian"
+﻿@page "/Latin-to-Russian"
 
-<PageTitle>Latin -> Rusian</PageTitle>
+<PageTitle>Latin -> Russian</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
@@ -8,17 +8,17 @@
     id="textarea1" 
     value="@LatinTxt" 
     maxlength="4000" 
-    @oninput="@((ChangeEventArgs e) => RusianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
+    @oninput="@((ChangeEventArgs e) => RussianTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea2" 
-    maxlength="4000" >@RusianTxt</textarea>
+    maxlength="4000" >@RussianTxt</textarea>
 
 @code {
 
-    private string? RusianTxt { get; set; }
+    private string? RussianTxt { get; set; }
     private string? LatinTxt { get; set; }
 
     private string GetValue(string LatinValue)
@@ -51,7 +51,7 @@
     private IDictionary<string, string> SpecialLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
 
         dict.Add("SHCH", "Щ");
         dict.Add("SHCh", "Щ");
@@ -116,7 +116,7 @@
     private IDictionary<string, string> CorrectLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         dict.Add("yE", "Е");
         dict.Add("yO", "Ё");
         dict.Add("zH", "Ж");
@@ -142,7 +142,7 @@
     private IDictionary<string, string> GetLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         dict.Add("ye", "е");
         dict.Add("yo", "ё");
         dict.Add("zh", "ж");
@@ -167,7 +167,7 @@
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         // g = г
         // j = й
         // x = ь

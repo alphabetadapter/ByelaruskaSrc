@@ -1,12 +1,12 @@
-﻿@page "/Rusian-to-Latin"
+﻿@page "/Russian-to-Latin"
 
-<PageTitle>Rusian -> Latin</PageTitle>
+<PageTitle>Russian -> Latin</PageTitle>
 
 <textarea 
     onkeydown="textControl(this,event)"
     class="form-control" 
     id="textarea1" 
-    value="@RusianTxt" 
+    value="@RussianTxt" 
     maxlength="4000" 
     @oninput="@((ChangeEventArgs e) => LatinTxt = GetValue(e?.Value?.ToString() ?? string.Empty))" />
 
@@ -18,12 +18,12 @@
 
 @code {
 
-    private string? RusianTxt { get; set; }
+    private string? RussianTxt { get; set; }
     private string? LatinTxt { get; set; }
 
-    private string GetValue(string RusianValue)
+    private string GetValue(string RussianValue)
     {
-        var tmpString = RusianValue ?? string.Empty;
+        var tmpString = RussianValue ?? string.Empty;
         var correction = CorrectLetterCombinations();
         var letterCombinations = GetLetterCombinations();
         var singleLetters = GetSingleLetters();
@@ -45,7 +45,7 @@
     private IDictionary<string, string> CorrectLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         dict.Add("[К|с]", "C");
         dict.Add("[к|С]", "C");
         return dict;
@@ -54,7 +54,7 @@
     private IDictionary<string, string> GetLetterCombinations()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         dict.Add("[к|с]", "c");
         dict.Add("[х]", "h");
         dict.Add("[К|С]", "C");
@@ -75,7 +75,7 @@
     private IDictionary<string, string> GetSingleLetters()
     {
         var dict = new Dictionary<string, string>();
-        // Rusian (BGN PCGN 1979) Latin
+        // Russian (BGN PCGN 1979) Latin
         // г = g
         // й = j
         // ь = x
